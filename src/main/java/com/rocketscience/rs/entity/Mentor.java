@@ -18,7 +18,7 @@ public class Mentor {
     private String education;
 
     @Column(name = "experience")
-    private String experience;
+    private Double experience;
 
     @Column(name = "price")
     private String price;
