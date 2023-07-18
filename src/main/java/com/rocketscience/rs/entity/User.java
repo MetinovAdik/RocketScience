@@ -26,9 +26,6 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "gender")
-    private String gender;
-
     @Column(name = "role")
     private Role role;
 

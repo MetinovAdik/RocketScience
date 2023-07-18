@@ -23,6 +23,9 @@ public class Mentor {
     @Column(name = "price")
     private String price;
 
+    @Column(name = "gender")
+    private String gender;
+
     @Column(name = "instagram")
     private String instagram;
 

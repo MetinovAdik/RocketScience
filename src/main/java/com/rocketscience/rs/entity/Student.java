@@ -16,6 +16,9 @@ public class Student {
     @Column(name = "education")
     private String education;
 
+    @Column(name = "gender")
+    private String gender;
+
     @Column(name = "instagram")
     private String instagram;
 
@@ -27,6 +30,7 @@ public class Student {
 
     @Column(name = "twitter")
     private String twitter;
+
 
     public Student(){}
 
