@@ -18,19 +18,6 @@ public class MentorService {
 
     public List<Mentor> findAll(){return mentorRepository.findAll();}
 
-    //Поиск по id (списками) Сделал это думая об ленте менторов
-    //Работает в связке с методом из юзер сервиса. Возможно изменю позже
-    public List<Mentor> findAllByIds(List<User> users) {
-        List<Long> userIds = new ArrayList<>();
-
-        for (User user : users) {
-            userIds.add(user.getId());
-        }
-
-        List<Mentor> mentors = mentorRepository.findAllById(userIds);
-        return mentors;
-    }
-
     //Поиск по предоставляемым услугам
     public List<Mentor> findByServicesContains(String services){
         return mentorRepository.findByServicesContains(services);
