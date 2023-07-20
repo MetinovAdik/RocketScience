@@ -1,35 +1,86 @@
 package com.rocketscience.rs.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Set;
 
 @Data
 @Entity
-@Table(name="user")
-public class User {
+@Builder
+@Table(name="users")
+@AllArgsConstructor
+@NoArgsConstructor
+public class User implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "auth_info_id_generator"
+    )
+    @SequenceGenerator(
+            name = "auth_info_id_generator",
+            sequenceName = "auth_info_seq",
+            allocationSize = 1
+    )
     private Long id;
-
-    @Column(name="firstName")
-    private String firstName;
-
-    @Column(name = "lastName")
-    private Long lastName;
-
-
-    @Column(name = "email")
     private String email;
+    private String password;
 
-    @Column(name = "role")
     private Role role;
+    private boolean isAccountNonLocked = true;
+    private LocalDateTime time;
+    private boolean webNotificationEnabled = true;
+    private boolean emailNotificationEnabled = true;
+    private boolean blackMoodTheme = false;
 
-    public User(){}
 
-    public User(Long id) {
-        this.id = id;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singleton(role);
     }
+
+    @Override
+    public String getPassword(){
+        return password;
+
+    }
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return isAccountNonLocked;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+
 }
