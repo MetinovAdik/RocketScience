@@ -12,6 +12,7 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     List<User> findByEmail(String email);
+//    User findByEmail(String email);
     Boolean existsByEmail(String email);
 
     Collection<? extends User> findByFirstNameContains(String string);

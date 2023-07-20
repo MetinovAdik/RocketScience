@@ -7,9 +7,14 @@ import lombok.Data;
 @Entity
 @Table(name = "mentor")
 public class Mentor {
-
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @OneToOne
+    @JoinColumn(name = "user_id", nullable = false, unique = true)
+    private User user;
+
 
     @Column(name = "services")
     private String services;

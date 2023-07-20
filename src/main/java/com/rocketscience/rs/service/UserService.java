@@ -29,4 +29,7 @@ public class UserService {
         i.addAll(userRepository.findByLastNameContains(string));
         return i;
     }
+    public User saveUser(User user){
+        return userRepository.save(user);
+    }
 }

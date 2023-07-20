@@ -1,6 +1,7 @@
 package com.rocketscience.rs.repository;
 
 import com.rocketscience.rs.entity.Mentor;
+import com.rocketscience.rs.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -19,5 +20,7 @@ public interface MentorRepository extends JpaRepository<Mentor, Long>{
 
     @Query("SELECT m FROM Mentor m WHERE m.experience >= :minExperience")
     List<Mentor> findByExperienceAboveOrEqual(@Param("minExperience") Double minExperience);
+
+    Mentor findByUser(User user);
 
 }

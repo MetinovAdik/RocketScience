@@ -1,14 +1,28 @@
 package com.rocketscience.rs.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import static jakarta.persistence.CascadeType.REMOVE;
+
 @Data
 @Entity
-@Table(name = "student")
+@Table(name = "students")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Student {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @OneToOne
+    @JoinColumn(name = "user_id", nullable = false, unique = true)
+    private User user;
 
     @Column(name = "age")
     private String age;
@@ -32,10 +46,6 @@ public class Student {
     private String twitter;
 
 
-    public Student(){}
 
-    public Student(Long id) {
-        this.id = id;
-    }
 
 }
