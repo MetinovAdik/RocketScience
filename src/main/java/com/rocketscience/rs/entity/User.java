@@ -20,9 +20,11 @@ public class User {
     @Column(name = "lastName")
     private String lastName;
 
-
     @Column(name = "email")
     private String email;
+
+    @Column(name = "phone")
+    private String phone;
 
     @Column(name = "role")
     private Role role;
