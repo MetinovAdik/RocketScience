@@ -20,8 +20,6 @@ public class User {
     @Column(name = "lastName")
     private String lastName;
 
-    @Column(name = "phone")
-    private String phone;
 
     @Column(name = "email")
     private String email;
