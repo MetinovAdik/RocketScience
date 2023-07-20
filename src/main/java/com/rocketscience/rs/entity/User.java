@@ -20,21 +20,14 @@ import java.util.Set;
 @Data
 @Entity
 @Builder
-@Table(name="users")
+@Table(name = "users")
 @AllArgsConstructor
 @NoArgsConstructor
 public class User implements UserDetails {
 
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "auth_info_id_generator"
-    )
-    @SequenceGenerator(
-            name = "auth_info_id_generator",
-            sequenceName = "auth_info_seq",
-            allocationSize = 1
-    )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_generator")
+    @SequenceGenerator(name = "user_id_generator", sequenceName = "user_info_seq", allocationSize = 1)
     private Long id;
     private String email;
     private String password;
@@ -53,10 +46,11 @@ public class User implements UserDetails {
     }
 
     @Override
-    public String getPassword(){
+    public String getPassword() {
         return password;
 
     }
+
     @Override
     public String getUsername() {
         return email;
