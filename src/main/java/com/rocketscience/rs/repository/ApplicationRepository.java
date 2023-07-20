@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface ApplicationRepository extends JpaRepository<Application, Long>{
 
-    List<Application> findAllByPlayerId(Long id);
+    List<Application> findAllByStudentId(Long id);
 
     List<Application> findAllByMentorId(Long id);
 }

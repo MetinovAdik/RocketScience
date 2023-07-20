@@ -15,8 +15,8 @@ public class ApplicationService {
     private final ApplicationRepository applicationRepository;
 
     //Находим все заявки игрока
-    public List<Application> findAllByPlayerId(Long id){
-        return applicationRepository.findAllByPlayerId(id);
+    public List<Application> findAllByStudentId(Long id){
+        return applicationRepository.findAllByStudentId(id);
     }
 
     //Находим все заявки ментора

@@ -5,6 +5,7 @@ import com.rocketscience.rs.entity.Science;
 import com.rocketscience.rs.entity.Subject;
 import com.rocketscience.rs.entity.Type;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,4 +18,7 @@ public interface KworkRepository extends JpaRepository<Kwork, Long>{
     List<Kwork> findByType(Type type);
 
     List<Kwork> findByScience(Science science);
+
+    @Query("SELECT k FROM Kwork k WHERE k.price <= :price")
+    List<Kwork> findByPriceLower(String price);
 }

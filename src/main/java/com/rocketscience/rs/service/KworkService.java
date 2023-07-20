@@ -32,4 +32,7 @@ public class KworkService {
     public List<Kwork> findByScience(Science science){
         return kworkRepository.findByScience(science);
     }
+
+    //Список по цене
+    public List<Kwork> findByPriceLower(String price) { return kworkRepository.findByPriceLower(price);}
 }

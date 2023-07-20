@@ -21,9 +21,9 @@ public class ApplicationController {
         this.applicationService = applicationService;
     }
 
-    @GetMapping("/by-player/{playerId}")
-    public List<Application> getApplicationsByPlayerId(@PathVariable Long playerId) {
-        return applicationService.findAllByPlayerId(playerId);
+    @GetMapping("/by-user/{userId}")
+    public List<Application> getApplicationsByStudentId(@PathVariable Long playerId) {
+        return applicationService.findAllByStudentId(playerId);
     }
 
     @GetMapping("/by-mentor/{mentorId}")

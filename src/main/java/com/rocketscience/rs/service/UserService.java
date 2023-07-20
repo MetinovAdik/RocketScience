@@ -29,4 +29,8 @@ public class UserService {
         i.addAll(userRepository.findByLastNameContains(string));
         return i;
     }
+
+    public void registerUser(User user){
+        userRepository.save(user);
+    }
 }

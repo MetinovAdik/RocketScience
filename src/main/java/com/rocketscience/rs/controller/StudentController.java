@@ -1,14 +1,12 @@
 package com.rocketscience.rs.controller;
 
+import com.rocketscience.rs.entity.Mentor;
 import com.rocketscience.rs.entity.Student;
 import com.rocketscience.rs.exception.NotFoundException;
 import com.rocketscience.rs.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -22,6 +20,20 @@ public class StudentController {
         this.studentService = studentService;
     }
 
+
+    @GetMapping("/cabinet")
+    public Student getStudentCavivetById(Long id){
+        //Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        //String username = authentication.getName();
+        //User user = userService.findByUsername(username);
+        //Long id = user.getId();
+        return studentService.findById(id);
+    }
+    @PostMapping("/cab-save")
+    public ResponseEntity<String> saveOrUpdate(@RequestBody Student student){
+        studentService.saveOrUpdate(student);
+        return ResponseEntity.ok("User registered successfully!");
+    }
     @GetMapping("/{studentId}")
     public ResponseEntity<Student> getStudentById(@PathVariable Long studentId) {
         try {

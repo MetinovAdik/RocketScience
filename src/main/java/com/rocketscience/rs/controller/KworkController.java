@@ -38,4 +38,9 @@ public class KworkController {
     public List<Kwork> getKworksByScience(@RequestParam Science science) {
         return kworkService.findByScience(science);
     }
+
+    @GetMapping("/by-price")
+    public List<Kwork> getKworksByPrice(@RequestParam String price){
+        return kworkService.findByPriceLower(price);
+    }
 }

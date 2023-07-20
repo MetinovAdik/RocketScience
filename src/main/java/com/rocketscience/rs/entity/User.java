@@ -6,7 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Data
 @Entity
-@Table(name="user")
+@Table(name="users")
 public class User {
 
     @Id
@@ -18,7 +18,7 @@ public class User {
     private String firstName;
 
     @Column(name = "lastName")
-    private Long lastName;
+    private String lastName;
 
     @Column(name = "phone")
     private String phone;
