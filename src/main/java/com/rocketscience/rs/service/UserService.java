@@ -19,7 +19,7 @@ public class UserService {
 
     public User findByEmail(String email) {
         if (userRepository.existsByEmail(email)) {
-            return userRepository.findByEmail(email).get(0);
+            return userRepository.findByEmail(email).get();
         } else throw new NotFoundException("Не могу найти пользователя");
     }
 
